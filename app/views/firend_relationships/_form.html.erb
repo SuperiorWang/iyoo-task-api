@@ -1,4 +1,4 @@
-<%= form_for [@user,FirendRelationship.new] do |f| %>
+<%= form_for [@user, @user.firend_relationship.build] do |f| %>
   <% if @firend_relationship.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@firend_relationship.errors.count, "error") %> prohibited this firend_relationship from being saved:</h2>
