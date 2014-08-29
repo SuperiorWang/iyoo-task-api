@@ -1,0 +1,10 @@
+<h1>登录</h1>
+<%= form_tag sessions_path do |f| %>
+	
+	<label for="login">Login</label>
+	<%= text_field_tag :login,params[:login] %>
+	<label for="password">Password</label>
+	<%= text_field_tag :password,params[:password] %>
+
+	<%= submit_tag :login %>
+<% end %>	

@@ -1,0 +1,17 @@
+<p>用户注册</p>
+<%= render 'form' %>
+<%= form_for :user,url: users_path do |f| %>
+	<p>
+		<%= f.label :login,"帐号" %>
+		<%= f.text_field :login %>
+	</p>
+
+	<p>
+		<%= f.label :hashed_password,"密码" %>
+		<%= f.text_field :hashed_password %>
+	</p>
+
+	<p>
+		<%= f.submit "注册" %>
+	</p>
+<% end %>

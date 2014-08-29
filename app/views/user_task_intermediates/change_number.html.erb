@@ -1,0 +1,27 @@
+<h1>Editing user_task_intermediate/Number</h1>
+<%= form_for @user_task_intermediate ,url: update_number_user_task_intermediate_path  do |f| %>
+  <% if @user_task_intermediate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user_task_intermediate.errors.count, "error") %> prohibited this user_task_intermediate from being saved:</h2>
+
+      <ul>
+      <% @user_task_intermediate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :number %><br>
+    <%= f.number_field :number %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Show', @user_task_intermediate %> |
+<%= link_to 'Back', user_task_intermediates_path %>

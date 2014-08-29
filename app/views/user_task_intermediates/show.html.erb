@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Task:</strong>
+  <%= @user_task_intermediate.task_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @user_task_intermediate.user_id %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @user_task_intermediate.number %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @user_task_intermediate.description %>
+</p>
+
+<p>
+  <strong>Is done:</strong>
+  <%= @user_task_intermediate.is_done %>
+</p>
+
+<%= link_to 'Edit', edit_user_task_intermediate_path(@user_task_intermediate) %> |
+<%= link_to 'Back', user_task_intermediates_path %>

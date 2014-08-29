@@ -1,0 +1,30 @@
+<%= form_for(@alert_task) do |f| %>
+  <% if @alert_task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@alert_task.errors.count, "error") %> prohibited this alert_task from being saved:</h2>
+
+      <ul>
+      <% @alert_task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_task_intermediate_id %><br>
+    <%= f.number_field :user_task_intermediate_id %>
+  </div>
+  <div class="field">
+    <%= f.label :friend_relationship_id %><br>
+    <%= f.number_field :friend_relationship_id %>
+  </div>
+  <div class="field">
+  	<%= f.label :has_alert %><br>
+  	<%= f.text_field :has_alert %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,2 @@
+module FirendRelationshipsHelper
+end
