@@ -1,0 +1,33 @@
+<h1>Listing SocialRecords</h1>
+
+<table>
+	<thead>
+	<tr>
+		<th>当前用户</th>
+		<th>朋友</th>
+		<th>任务</th>
+		<th>撮一下</th>
+		<th>打赏</th>
+		<th colspan="6"></th>
+	</tr>
+	<thead>
+
+	<tbody>
+		<% @social_records.each do |social_record| %>
+			<tr>
+				<td><%= social_record.task_id  %></td>
+				<td><%= social_record.user_id  %></td>
+				<td><%= social_record.friend_id %></td>
+				<td><%= social_record.pinch  %></td>
+				<td><%= social_record.award  %></td>
+				<td><%= link_to 'show', user_social_record_path(:id => social_record.id) %></td>
+				<td><%= link_to 'Edit', edit_user_social_record_path(:id => social_record.id) %></td>
+				<td><%= link_to 'Destroy', user_social_record_path(:id => social_record.id) , :method => :delete, :data => {:confirm => 'Are you sure?' }%></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Social Record', new_user_social_record_path %>

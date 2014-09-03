@@ -2,8 +2,10 @@ class UserTaskIntermediate < ActiveRecord::Base
 	# I don't know,But I can try
 	belongs_to :user
 	belongs_to :task
+	has_many   :alert_task
 
 	before_save :judgement_user_task_exist
+	
 
 protected
 

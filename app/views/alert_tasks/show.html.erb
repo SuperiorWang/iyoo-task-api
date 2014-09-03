@@ -1,0 +1,20 @@
+<p id='notice'><%= notice %></p> 
+<p>Show Alert Task</p>
+
+<p>
+	<strong>user_task_intermediate_id:</strong>
+	<%= @alert_task.user_task_intermediate_id %>
+</p>
+
+<p>
+	<strong>friend_relationship_id:</strong>
+	<%= @alert_task.friend_relationship_id %>
+</p>
+
+<p>
+	<strong>has_alert:</strong>
+	<%= @alert_task.has_alert %>
+</p>
+
+<%= link_to 'Back', user_firend_relationship_alert_tasks_path %> |
+<%= link_to 'Edit', edit_user_firend_relationship_alert_task_path %>

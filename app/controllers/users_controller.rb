@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	before_action :init,only: [:my_notice,:notice_friend]
 
 	def new
 		@user = User.new
@@ -18,7 +19,19 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 	end
 
+	def my_notice
+		@social_records = @user.social_record.where("user_id = ?",params[:id])
+	end
+
+	def notice_friend
+		@social_records = @user.social_record.where("friend_id = ?",params[:id])
+	end
+
 private
+	def init
+		@user = User.find(params[:id])
+	end
+
 	def user_params
 		params.require(:user).permit(:login,:hashed_password)
 	end	

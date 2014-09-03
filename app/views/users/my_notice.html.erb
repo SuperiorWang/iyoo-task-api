@@ -1,0 +1,28 @@
+<p>Listing Notice</p>
+<% @social_records.each do |social_record| %>
+	<p> 
+		<strong>task_id:</strong>
+		<%= social_record.task_id %>
+	</p>
+
+	<p>
+		<strong>user_id:</strong>
+		<%= social_record.user_id %>
+	</p>
+
+	<p>
+		<strong>friend_id:</strong>
+		<%= social_record.friend_id %>
+	</p>
+
+	<p>
+		<strong>pinch:</strong>
+		<%= social_record.pinch %>
+	</p>
+
+	<p>
+		<strong>award:</strong>
+		<%= social_record.award %>
+	</p>
+<p>---------------------------------------</p>
+<% end %>

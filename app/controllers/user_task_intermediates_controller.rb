@@ -4,7 +4,8 @@ class UserTaskIntermediatesController < ApplicationController
   # GET /user_task_intermediates
   # GET /user_task_intermediates.json
   def index
-    @user_task_intermediates = UserTaskIntermediate.all
+    @user = User.find_by_id(session[:user_id])
+    @user_task_intermediates = @user.user_task_intermediate.all if @user
   end
 
   # GET /user_task_intermediates/1
@@ -14,11 +15,13 @@ class UserTaskIntermediatesController < ApplicationController
 
   # GET /user_task_intermediates/new
   def new
-    @user_task_intermediate = UserTaskIntermediate.new
+    render text:"请登录" unless @user = User.find_by_id(session[:user_id])
+    @user_task_intermediate = @user.user_task_intermediate.new
   end
 
   # GET /user_task_intermediates/1/edit
   def edit
+    @user = User.find_by_id(session[:user_id])
   end
 
   # POST /user_task_intermediates
@@ -29,7 +32,7 @@ class UserTaskIntermediatesController < ApplicationController
 
     respond_to do |format|
       if @user_task_intermediate.save
-        format.html { redirect_to @user_task_intermediate, notice: 'User task intermediate was successfully created.' }
+        format.html { redirect_to user_user_task_intermediates_path, notice: 'User task intermediate was successfully created.' }
         format.json { render :show, status: :created, location: @user_task_intermediate }
       else
         format.html { render :new }
@@ -43,11 +46,11 @@ class UserTaskIntermediatesController < ApplicationController
   def update
     respond_to do |format|
       if @user_task_intermediate.update(user_task_intermediate_params)
-        format.html { redirect_to @user_task_intermediate, notice: 'User task intermediate was successfully updated.' }
+        format.html { redirect_to user_user_task_intermediates_path, notice: 'User task intermediate was successfully updated.' }
         format.json { render :show, status: :ok, location: @user_task_intermediate }
       else
-        format.html { render :edit }
-        format.json { render json: @user_task_intermediate.errors, status: :unprocessable_entity }
+        flash.now[:error] = 'update failed'
+        format.html { redirect_to edit_user_user_task_intermediate_path }
       end
     end
   end
@@ -70,7 +73,7 @@ class UserTaskIntermediatesController < ApplicationController
   def destroy
     @user_task_intermediate.destroy
     respond_to do |format|
-      format.html { redirect_to user_task_intermediates_url, notice: 'User task intermediate was successfully destroyed.' }
+      format.html { redirect_to user_user_task_intermediates_url, notice: 'User task intermediate was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

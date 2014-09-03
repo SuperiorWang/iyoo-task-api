@@ -1,4 +1,4 @@
-<%= form_for(@alert_task) do |f| %>
+<%= form_for [@user,@friend ,@alert_task] do |f| %>
   <% if @alert_task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@alert_task.errors.count, "error") %> prohibited this alert_task from being saved:</h2>

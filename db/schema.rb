@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140829025707) do
+ActiveRecord::Schema.define(version: 20140902021803) do
 
   create_table "alert_tasks", force: true do |t|
     t.integer  "user_task_intermediate_id"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 20140829025707) do
   create_table "firend_relationships", force: true do |t|
     t.integer  "user_id"
     t.integer  "firend"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "social_records", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "task_id"
+    t.integer  "friend_id"
+    t.boolean  "pinch"
+    t.boolean  "award"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

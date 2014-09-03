@@ -1,6 +1,30 @@
 <h1>Editing firend_relationship</h1>
 
-<%= render 'form' %>
+<%= form_for [@user, @user.firend_relationship.find_by_id(params[:id])] do |f| %>
+  <% if @firend_relationship.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@firend_relationship.errors.count, "error") %> prohibited this firend_relationship from being saved:</h2>
 
-<%= link_to 'Show', @firend_relationship %> |
-<%= link_to 'Back', firend_relationships_path %>
+      <ul>
+      <% @firend_relationship.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :firend %><br>
+    <%= f.number_field :firend %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Edit',edit_user_firend_relationship_path(:id => @firend_relationship.id) %> |
+<%= link_to 'Back',user_firend_relationships_path %>

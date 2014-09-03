@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
 
-	has_many :user_task_intermediate
+	has_many :social_record
 	has_many :firend_relationship
-
+	has_many :user_task_intermediate
 
 	validates :login,:presence => true ,
 					 :numericality => { only_integer: true} ,

@@ -10,13 +10,13 @@
   </thead>
 
   <tbody>
-    <% @user.firend_relationships.each do |firend_relationship| %>
+    <% @user.firend_relationship.each do |firend_relationship| %>
       <tr>
         <td><%= firend_relationship.user_id %></td>
         <td><%= firend_relationship.firend %></td>
-        <td><%= link_to 'Show', firend_relationship %></td>
-        <td><%= link_to 'Edit', edit_firend_relationship_path(firend_relationship) %></td>
-        <td><%= link_to 'Destroy', firend_relationship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', user_firend_relationship_path(:id => firend_relationship.id) %></td>
+        <td><%= link_to 'Edit', edit_user_firend_relationship_path(:id => firend_relationship.id) %></td>
+        <td><%= link_to 'Destroy', user_firend_relationship_path(:id => firend_relationship.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Firend relationship', new_firend_relationship_path %>
+<%= link_to 'New Firend relationship', new_user_firend_relationship_path %>

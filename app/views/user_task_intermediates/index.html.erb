@@ -20,9 +20,9 @@
         <td><%= user_task_intermediate.number %></td>
         <td><%= user_task_intermediate.description %></td>
         <td><%= user_task_intermediate.is_done %></td>
-        <td><%= link_to 'Show', user_task_intermediate %></td>
-        <td><%= link_to 'Edit', edit_user_task_intermediate_path(user_task_intermediate) %></td>
-        <td><%= link_to 'Destroy', user_task_intermediate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', user_user_task_intermediate_path(:id => user_task_intermediate.id) %></td>
+        <td><%= link_to 'Edit', edit_user_user_task_intermediate_path(:id => user_task_intermediate.id) %></td>
+        <td><%= link_to 'Destroy', user_user_task_intermediate_path(:id => user_task_intermediate.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New User task intermediate', new_user_task_intermediate_path %>
+<%= link_to 'New User task intermediate', new_user_user_task_intermediate_path %>

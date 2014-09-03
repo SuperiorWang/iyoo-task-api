@@ -1,0 +1,28 @@
+<h1>Listing alert_tasks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>task</th>
+      <th>friend</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @alert_tasks.each do |alert_task| %>
+      <tr>
+        <td><%= alert_task.user_task_intermediate_id %></td>
+        <td><%= alert_task.friend_relationship_id %></td>
+        <td><%= alert_task.has_alert %></td>
+        <td><%= link_to 'Show', user_firend_relationship_alert_task_path(:id => alert_task.id) %></td>
+        <td><%= link_to 'Edit', edit_user_firend_relationship_alert_task_path(:id => alert_task.id) %></td>
+        <td><%= link_to 'Destroy', user_firend_relationship_alert_task_path(:id => alert_task.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Firend relationship', new_user_firend_relationship_alert_task_path %>

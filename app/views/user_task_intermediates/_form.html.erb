@@ -1,4 +1,4 @@
-<%= form_for(@user_task_intermediate) do |f| %>
+<%= form_for [@user,@user.user_task_intermediate.build] do |f| %>
   <% if @user_task_intermediate.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user_task_intermediate.errors.count, "error") %> prohibited this user_task_intermediate from being saved:</h2>

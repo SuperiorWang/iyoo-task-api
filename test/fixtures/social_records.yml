@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  task: MyString
+  user: MyString
+  friend: MyString
+  pinch: false
+  award: false
+
+two:
+  task: MyString
+  user: MyString
+  friend: MyString
+  pinch: false
+  award: false

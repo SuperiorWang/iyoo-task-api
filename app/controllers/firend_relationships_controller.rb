@@ -4,7 +4,8 @@ class FirendRelationshipsController < ApplicationController
   # GET /firend_relationships
   # GET /firend_relationships.json
   def index
-    @firend_relationships = FirendRelationship.all
+    @user = User.find_by_id(session[:user_id])
+    @firend_relationships = @user.firend_relationship.all if @user
   end
 
   # GET /firend_relationships/1
@@ -15,22 +16,24 @@ class FirendRelationshipsController < ApplicationController
   # GET /firend_relationships/new
   def new
     render text:"请登录" unless @user = User.find_by_id(session[:user_id])
-    @firend_relationship = FirendRelationship.new
+    @firend_relationship = @user.firend_relationship.new
   end
 
   # GET /firend_relationships/1/edit
   def edit
+    @user = User.find_by_id(session[:user_id])
   end
 
   # POST /firend_relationships
   # POST /firend_relationships.json
   def create
-    @firend_relationship = FirendRelationship.new(firend_relationship_params)
+    @user = User.find_by_id(session[:user_id])
+    @firend_relationship = @user.firend_relationship.new(firend_relationship_params)
 
     respond_to do |format|
       if @firend_relationship.save
-        format.html { redirect_to @firend_relationship, notice: 'Firend relationship was successfully created.' }
-        format.json { render :show, status: :created, location: @firend_relationship }
+        format.html { redirect_to user_firend_relationships_path, notice: 'Firend relationship was successfully created.' }
+        format.json { render :show, status: :created, location: @user_firend_relationships }
       else
         format.html { render :new }
         format.json { render json: @firend_relationship.errors, status: :unprocessable_entity }
@@ -43,10 +46,12 @@ class FirendRelationshipsController < ApplicationController
   def update
     respond_to do |format|
       if @firend_relationship.update(firend_relationship_params)
-        format.html { redirect_to @firend_relationship, notice: 'Firend relationship was successfully updated.' }
+        puts "update"
+        format.html { redirect_to user_firend_relationship_path, notice: 'Firend relationship was successfully updated.' }
         format.json { render :show, status: :ok, location: @firend_relationship }
       else
-        format.html { render :edit }
+        puts "not update"
+        format.html { redirect_to edit_user_firend_relationship_path }
         format.json { render json: @firend_relationship.errors, status: :unprocessable_entity }
       end
     end
@@ -57,7 +62,7 @@ class FirendRelationshipsController < ApplicationController
   def destroy
     @firend_relationship.destroy
     respond_to do |format|
-      format.html { redirect_to firend_relationships_url, notice: 'Firend relationship was successfully destroyed.' }
+      format.html { redirect_to user_firend_relationships_url, notice: 'Firend relationship was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -1,6 +1,44 @@
 <h1>Editing user_task_intermediate</h1>
 
-<%= render 'form' %> 
+<%= form_for [@user,@user.user_task_intermediate.find(params[:id])] do |f| %>
+  <% if @user_task_intermediate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user_task_intermediate.errors.count, "error") %> prohibited this user_task_intermediate from being saved:</h2>
 
-<%= link_to 'Show', @user_task_intermediate %> |
-<%= link_to 'Back', user_task_intermediates_path %>
+      <ul>
+      <% @user_task_intermediate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :task_id %><br>
+    <%= f.number_field :task_id %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :number %><br>
+    <%= f.number_field :number %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :is_done %><br>
+    <%= f.text_field :is_done %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Edit', edit_user_user_task_intermediate_path(:id => @user_task_intermediate) %> |
+<%= link_to 'Back', user_user_task_intermediates_path %>
+
