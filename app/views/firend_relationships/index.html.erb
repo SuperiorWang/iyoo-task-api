@@ -12,8 +12,8 @@
   <tbody>
     <% @user.firend_relationship.each do |firend_relationship| %>
       <tr>
-        <td><%= firend_relationship.user_id %></td>
-        <td><%= firend_relationship.firend %></td>
+        <td><%= User.find_by_id(firend_relationship.user_id).login %></td>
+        <td><%= User.find_by_id(firend_relationship.firend).login %></td>
         <td><%= link_to 'Show', user_firend_relationship_path(:id => firend_relationship.id) %></td>
         <td><%= link_to 'Edit', edit_user_firend_relationship_path(:id => firend_relationship.id) %></td>
         <td><%= link_to 'Destroy', user_firend_relationship_path(:id => firend_relationship.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Firend relationship', new_user_firend_relationship_path %>
+<%= link_to 'New Firend relationship', new_user_firend_relationship_path %>  | <%= link_to 'Back',users_path %>

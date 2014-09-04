@@ -12,8 +12,8 @@
   <tbody>
     <% @alert_tasks.each do |alert_task| %>
       <tr>
-        <td><%= alert_task.user_task_intermediate_id %></td>
-        <td><%= alert_task.friend_relationship_id %></td>
+        <td><%=Task.find_by_id(UserTaskIntermediate.find_by_id(alert_task.user_task_intermediate_id).task_id).title %></td>
+        <td><%= User.find_by_id(FirendRelationship.find_by_id(alert_task.friend_relationship_id).firend).login %></td>
         <td><%= alert_task.has_alert %></td>
         <td><%= link_to 'Show', user_firend_relationship_alert_task_path(:id => alert_task.id) %></td>
         <td><%= link_to 'Edit', edit_user_firend_relationship_alert_task_path(:id => alert_task.id) %></td>
@@ -26,3 +26,4 @@
 <br>
 
 <%= link_to 'New Firend relationship', new_user_firend_relationship_alert_task_path %>
+<%= link_to 'Back', user_firend_relationships_path %>

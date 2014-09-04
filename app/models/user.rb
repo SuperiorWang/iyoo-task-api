@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
 	has_many :social_record
+	has_many :personal_data
 	has_many :firend_relationship
 	has_many :user_task_intermediate
 

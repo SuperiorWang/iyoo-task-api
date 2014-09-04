@@ -3,9 +3,9 @@
 <table>
 	<thead>
 	<tr>
+		<th>任务</th>
 		<th>当前用户</th>
 		<th>朋友</th>
-		<th>任务</th>
 		<th>撮一下</th>
 		<th>打赏</th>
 		<th colspan="6"></th>
@@ -15,11 +15,23 @@
 	<tbody>
 		<% @social_records.each do |social_record| %>
 			<tr>
-				<td><%= social_record.task_id  %></td>
-				<td><%= social_record.user_id  %></td>
-				<td><%= social_record.friend_id %></td>
-				<td><%= social_record.pinch  %></td>
-				<td><%= social_record.award  %></td>
+				<td><%= Task.find_by_id(social_record.task_id).title %></td>
+				<td><%= User.find_by_id(social_record.user_id).login  %></td>
+				<td><%= User.find_by_id(social_record.friend_id).login %></td>
+				<td>
+					<%  if social_record.pinch === true  %>
+						<%= "是" %>
+					<% elsif social_record.pinch === false %>
+						<%= "否" %>
+					<% end %>
+				</td>
+				<td>
+					<%  if social_record.award == true  %>
+						<%= "是" %>
+					<% elsif social_record.award === false %>
+						<%= "否" %>
+					<% end %>		
+				</td>
 				<td><%= link_to 'show', user_social_record_path(:id => social_record.id) %></td>
 				<td><%= link_to 'Edit', edit_user_social_record_path(:id => social_record.id) %></td>
 				<td><%= link_to 'Destroy', user_social_record_path(:id => social_record.id) , :method => :delete, :data => {:confirm => 'Are you sure?' }%></td>
@@ -30,4 +42,5 @@
 
 <br>
 
-<%= link_to 'New Social Record', new_user_social_record_path %>
+<%= link_to 'New Social Record', new_user_social_record_path %> | 
+<%= link_to 'Back',users_path %>

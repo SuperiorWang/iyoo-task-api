@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
 	before_action :init,only: [:my_notice,:notice_friend]
 
+	def index
+	end
+
 	def new
 		@user = User.new
 	end

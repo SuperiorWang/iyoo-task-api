@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nickname:</strong>
+  <%= @personal_datum.nickname %>
+</p>
+
+<p>
+  <strong>Sex:</strong>
+  <%= @personal_datum.sex %>
+</p>
+
+<p>
+  <strong>Region:</strong>
+  <%= @personal_datum.region %>
+</p>
+
+<p>
+  <strong>Treasure:</strong>
+  <%= @personal_datum.treasure %>
+</p>
+
+<p>
+  <strong>Friend number:</strong>
+  <%= @personal_datum.friend_number %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @personal_datum.phone_number %>
+</p>
+
+<p>
+  <strong>Login password:</strong>
+  <%= @personal_datum.login_password %>
+</p>
+
+<%= link_to 'Edit', edit_personal_datum_path(@personal_datum) %> |
+<%= link_to 'Back', personal_data_path %>

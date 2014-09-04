@@ -1,0 +1,16 @@
+<p>
+	<%= link_to '注册用户',new_user_path %>
+</p>
+<p>
+	<%= link_to 'goto 好友记录',user_firend_relationships_path(:user_id => session[:user_id]) %>
+</p>
+
+<p>
+	<%= link_to 'goto 社交记录',user_social_records_path(:user_id => session[:user_id]) %>
+</p>
+<p>
+	<%= link_to 'goto 用户任务记录',user_user_task_intermediates_path(:user_id => session[:user_id]) %>
+</p>
+<p>
+	<%= link_to 'Back',sessions_path %>
+</p>

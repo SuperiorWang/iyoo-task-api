@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :personal_data
+
   resources :tasks 
 
   resources :sessions
@@ -18,6 +20,8 @@ Rails.application.routes.draw do
     end 
 
     resources :social_records 
+
+    resources :personal_data
 
     member do
       get 'notice', to: 'users#my_notice' 

@@ -1,0 +1,18 @@
+
+ <% unless flash[:success].nil? %>
+	<div id="notice"><%= flash[:success] %></div>
+<% end %>
+<p>
+	<%= link_to "go_to_login", new_session_path %>
+</p>
+<p>	
+	<%= link_to "go_to_task",  tasks_path %>
+</p>
+<p>
+	<%= link_to "go_to_user",  users_path %>
+</p>
+
+ <p>
+ 	<%= link_to '退出登录',"/sessions/#{session[:user_id]}",method: :delete,data: {confirm: 'Are you sure?'} %>
+ </p>
+

@@ -10,5 +10,5 @@
   <%= @firend_relationship.firend %>
 </p>
 
-<%= link_to 'Edit',edit_user_firend_relationship_path(:id => @firend_relationship.id) %> |
-<%= link_to 'Back', user_firend_relationships_path %>
+<%= link_to 'Edit',edit_user_firend_relationship_path(:id => @firend_relationship.id) %> 
+<%= link_to 'Back', user_firend_relationships_path %> | <%= link_to 'Goto Alert Taks', user_firend_relationship_alert_tasks_path(:firend_relationship_id => @firend_relationship.id) %>
