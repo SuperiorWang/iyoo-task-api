@@ -12,5 +12,8 @@
 	<%= link_to 'goto 用户任务记录',user_user_task_intermediates_path(:user_id => session[:user_id]) %>
 </p>
 <p>
+	<%= link_to "显示用户信息", user_personal_data_path(:user_id => session[:user_id]) %>
+</p>
+<p>
 	<%= link_to 'Back',sessions_path %>
 </p>
