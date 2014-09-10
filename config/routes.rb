@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :personal_data
-
   resources :tasks 
 
   resources :sessions

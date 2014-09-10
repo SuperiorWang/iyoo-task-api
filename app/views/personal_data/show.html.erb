@@ -35,5 +35,5 @@
   <%= @personal_datum.login_password %>
 </p>
 
-<%= link_to 'Edit', edit_personal_datum_path(@personal_datum) %> |
-<%= link_to 'Back', personal_data_path %>
+<%= link_to 'Edit', edit_user_personal_datum_path(:id => @personal_datum.id) %> |
+<%= link_to 'Back', user_personal_data_path %>

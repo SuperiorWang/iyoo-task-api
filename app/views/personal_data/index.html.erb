@@ -24,9 +24,9 @@
         <td><%= personal_datum.friend_number %></td>
         <td><%= personal_datum.phone_number %></td>
         <td><%= personal_datum.login_password %></td>
-        <td><%= link_to 'Show', personal_datum %></td>
-        <td><%= link_to 'Edit', edit_personal_datum_path(personal_datum) %></td>
-        <td><%= link_to 'Destroy', personal_datum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', user_personal_datum_path(:id => personal_datum.id) %></td>
+        <td><%= link_to 'Edit', edit_user_personal_datum_path(id: personal_datum.id) %></td>
+        <td><%= link_to 'Destroy', user_personal_datum_path(id: personal_datum.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Personal datum', new_personal_datum_path %>
+<%= link_to 'New Personal datum', new_user_personal_datum_path %>

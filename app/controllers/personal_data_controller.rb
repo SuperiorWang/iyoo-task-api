@@ -1,5 +1,7 @@
 class PersonalDataController < ApplicationController
-  before_action :set_personal_datum, only: [:show, :edit, :update, :destroy]
+
+  before_action :set_personal_datum, only: [:show,:edit,  :update, :destroy]
+  before_action :get_user,           only: [:new, :create,:edit,   :update]
 
   # GET /personal_data
   # GET /personal_data.json
@@ -14,21 +16,23 @@ class PersonalDataController < ApplicationController
 
   # GET /personal_data/new
   def new
-    @personal_datum = PersonalDatum.new
+    @personal_datum = @user.personal_data.build if @user
+    helper
   end
 
   # GET /personal_data/1/edit
   def edit
+    helper
   end
 
   # POST /personal_data
   # POST /personal_data.json
   def create
-    @personal_datum = PersonalDatum.new(personal_datum_params)
+    @personal_datum = @user.personal_data.build(personal_datum_params)
 
     respond_to do |format|
       if @personal_datum.save
-        format.html { redirect_to @personal_datum, notice: 'Personal datum was successfully created.' }
+        format.html { redirect_to user_personal_datum_path(:id => @personal_datum.id), notice: 'Personal datum was successfully created.' }
         format.json { render :show, status: :created, location: @personal_datum }
       else
         format.html { render :new }
@@ -42,7 +46,7 @@ class PersonalDataController < ApplicationController
   def update
     respond_to do |format|
       if @personal_datum.update(personal_datum_params)
-        format.html { redirect_to @personal_datum, notice: 'Personal datum was successfully updated.' }
+        format.html { redirect_to user_personal_datum_path(id: @personal_datum.id), notice: 'Personal datum was successfully updated.' }
         format.json { render :show, status: :ok, location: @personal_datum }
       else
         format.html { render :edit }
@@ -56,7 +60,7 @@ class PersonalDataController < ApplicationController
   def destroy
     @personal_datum.destroy
     respond_to do |format|
-      format.html { redirect_to personal_data_url, notice: 'Personal datum was successfully destroyed.' }
+      format.html { redirect_to user_personal_data_url, notice: 'Personal datum was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -71,4 +75,21 @@ class PersonalDataController < ApplicationController
     def personal_datum_params
       params.require(:personal_datum).permit(:nickname, :sex, :region, :treasure, :friend_number, :phone_number, :login_password)
     end
+
+    def get_user
+      @user = User.find_by_id(session[:user_id]) 
+    end
+
+    def helper
+        @personal_datum.friend_number = @user.firend_relationship.all.count
+
+        if @personal_datum.phone_number.blank?
+          @personal_datum.phone_number = @user.login
+        end
+
+        if @personal_datum.login_password.blank?
+           @personal_datum.login_password = @user.hashed_password
+        end
+    end
+
 end
